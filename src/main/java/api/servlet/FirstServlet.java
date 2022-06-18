@@ -11,23 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/index")
+@WebServlet("/inputForm")
 public class FirstServlet extends HttpServlet {
-    String string = "Hello i am Servlet";
-    @Override
-    public void init()  {
-        string="Hello method init() is running";
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        resp.setContentType("text/html");
-        try (PrintWriter printWriter = resp.getWriter()) {
-            printWriter.write("Parameter Id = " + req.getParameter("id") + " /");
-            printWriter.println();
-            printWriter.write("Name " + req.getParameter("name") + " age = " + req.getParameter("age"));
-        }
-    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws  IOException {
@@ -47,6 +32,7 @@ public class FirstServlet extends HttpServlet {
             writer.println("<h4>Courses</h4>");
             for (String course : courses)
                 writer.println("<li>" + course + "</li>");
+            writer.println("<a href=\"index.jsp\"> Return to Home Page</a>");
         }
     }
 }
