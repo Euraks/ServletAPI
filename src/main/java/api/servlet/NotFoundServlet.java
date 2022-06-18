@@ -3,21 +3,22 @@
  */
 package api.servlet;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
-@WebServlet("/hello")
-public class HelloServlet extends HttpServlet {
+@WebServlet("/notfound")
+public class NotFoundServlet extends Forward {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ServletContext servletContext = getServletContext();
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/hello.html");
-        requestDispatcher.forward(req,resp);
+        resp.setContentType("text/html");
+
+        try(PrintWriter printWriter = resp.getWriter()) {
+            printWriter.println("<H2> Not Found id = "+req.getParameter("id")+"</H2>");
+
+        }
     }
 }

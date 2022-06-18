@@ -17,7 +17,9 @@
 <br><br>
 <a href="calc.jsp">Calculator Page</a>
 <br><br>
-<a href="hello.html">Forward page Hello</a>
+<a href="/forward">Forward page Hello</a>
+<br><br>
+<a href="/notfound">Not Found Servlet</a>
 
 </body>
 </html>
