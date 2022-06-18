@@ -21,8 +21,9 @@ public class FirstServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html");
-        PrintWriter printWriter = resp.getWriter();
-        printWriter.write(string);
-        printWriter.close();
+        try (PrintWriter printWriter = resp.getWriter()) {
+            string = req.getParameter("id");
+            printWriter.write("Parameter Id = " + string + " /");
+        }
     }
 }
